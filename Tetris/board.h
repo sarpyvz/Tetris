@@ -9,6 +9,7 @@ public:
 	Board();
 	void Init();
 	void Print();
+	void Draw();
 	int board[20][10];
 
 private:
@@ -16,8 +17,6 @@ private:
 	int numCols;
 	int cellSize;
 	sf::Color* colors = new sf::Color[100];
-	sf::Color* GetColors();
-
-
+	void GetCellColors();
 
 };
