@@ -12,11 +12,21 @@ public:
 	void Draw();
 	int board[20][10];
 
-private:
+	int getNumRows();
+	int getNumCols();
+	int getCellSize();
+
+
+	sf::Color* colors = new sf::Color[100];
 	int numRows;
 	int numCols;
 	int cellSize;
-	sf::Color* colors = new sf::Color[100];
+
+private:
+	//int numRows;
+	//int numCols;
+	//int cellSize;
+	//sf::Color* colors = new sf::Color[100];
 	void GetCellColors();
 
 };

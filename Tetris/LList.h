@@ -1,11 +1,11 @@
 #pragma once
 
-#ifndef INT_LINKED_LIST
-#define INT_LINKED_LIST
+
 #include <iostream>
 #include <string>
 using namespace std;
 
+template <class T>
 class LLNode
 {
 public:
@@ -57,4 +57,3 @@ private:
     int size;
 };
 
-#endif

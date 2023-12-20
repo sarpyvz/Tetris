@@ -12,6 +12,23 @@ Board::Board()
 
 }
 
+// GETTERS
+//int Board::getNumCols() 
+//{
+//	return numCols;
+//}
+//
+//int Board::getNumRows()
+//{
+//	return numRows;
+//}
+//
+//int Board::getCellSize() 
+//{
+//	return cellSize;
+//}
+
+
 void Board::Init() {
 	for (int row = 0; row < numRows; row++) 
 	{
