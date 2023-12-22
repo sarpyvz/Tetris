@@ -11,25 +11,26 @@ class LLNode
 public:
     LLNode()
     {
-        next = 0;
+        next = nullptr;
     }
-    LLNode(string el, LLNode* ptr = 0)
+    LLNode(T el, LLNode<T>* ptr = 0)
     {
-        info = el;
+        info = value;
         next = ptr;
     }
 
-    string info;
-    LLNode* next;
+    T info;
+    LLNode<T>* next;
 };
 
+template<class T>
 class LList
 {
 public:
     LList()
     {
-        head = 0;
-        tail = 0;
+        head = nullptr;
+        tail = nullptr;
         size = 0;
     }
 
@@ -41,19 +42,19 @@ public:
     }
 
     int GetSize(void);
-    string GetAt(int);
-    void ReplaceInfoAtNode(int, string);
-    void addToHead(string);
-    void addToMiddle(int, string);
-    void addToTail(string);
-    string deleteFromHead();
-    string deleteFromTail();
-    void deleteNode(string);
-    bool isInList(string) const;
+    T GetAt(int);
+    void ReplaceInfoAtNode(int, T);
+    void addToHead(T);
+    void addToMiddle(int, T);
+    void addToTail(T);
+    T deleteFromHead();
+    T deleteFromTail();
+    void deleteNode(const T);
+    bool isInList(T) const;
     void printAll() const;
 
 private:
-    LLNode* head, * tail;
+    LLNode<T> *head, * tail;
     int size;
 };
 

@@ -8,13 +8,10 @@ class Board {
 public:
 	Board();
 	void Init();
-	void Print();
-	void Draw();
+	void Print() const;
+	void Draw(sf::RenderWindow& target);
 	int board[20][10];
 
-	int getNumRows();
-	int getNumCols();
-	int getCellSize();
 
 
 	sf::Color* colors = new sf::Color[100];
@@ -27,6 +24,5 @@ private:
 	//int numCols;
 	//int cellSize;
 	//sf::Color* colors = new sf::Color[100];
-	void GetCellColors();
 
 };

@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "board.h"
+#include "pieces.cpp"
 
 
 int main()
@@ -8,11 +9,9 @@ int main()
     window.setFramerateLimit(60);
 
     Board board = Board();
-    board.board[0][0] = 1; // 0 DAN BAÞLIYOR 19 A VE 0 DAN 9 A  KADAR GÝDÝYOR O YÜZDEN 20 VEYA 10 YAZAMIYORUZ
-    board.board[5][8] = 6;
-    board.board[19][9] = 3;
     board.Print();
     
+    LPiece piece = LPiece();
 
     while (window.isOpen())
     {
@@ -28,7 +27,7 @@ int main()
         
         // FOR DRAWING GRID AND SQUARES
         
-        for (int row = 0; row < board.numRows; row++)
+        /*for (int row = 0; row < board.numRows; row++)
         {
             for (int column = 0; column < board.numCols; column++)
             {
@@ -40,9 +39,11 @@ int main()
                 square.setFillColor(board.colors[cellValue]);
                 window.draw(square);
             }
-        }
+        }*/
 
-
+        board.Draw(window);
+        piece.Draw(window);
+       
         window.display();
 
     }

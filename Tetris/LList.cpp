@@ -1,9 +1,10 @@
 #include "LList.h"
 #include <string>
 
-LList::~LList()
+template <class T>
+LList<T>::~LList()
 {
-    for (LLNode* p; !isEmpty(); )
+    for (LLNode<T>* p; !isEmpty(); )
     {
         p = head->next;
         delete head;
@@ -11,7 +12,8 @@ LList::~LList()
     }
 }
 
-void LList::addToHead(string el)
+template <class T>
+void LList<T>::addToHead(T el)
 {
     head = new LLNode(el, head);
     if (tail == 0)
@@ -22,10 +24,11 @@ void LList::addToHead(string el)
     size++;
 }
 
-void LList::addToMiddle(int x, string el)
+template <class T>
+void LList<T>::addToMiddle(int x, T el)
 {
-    LLNode* newNode = new LLNode(el);
-    LLNode* tmp = head;
+    LLNode<T>* newNode = new LLNode(el);
+    LLNode<T>* tmp = head;
 
     if (x >= 1 && x <= size)
     {
@@ -41,7 +44,8 @@ void LList::addToMiddle(int x, string el)
     }
 }
 
-void LList::addToTail(string el)
+template <class T>
+void LList<T>::addToTail(T el)
 {
     if (tail != 0)
     {
@@ -56,9 +60,10 @@ void LList::addToTail(string el)
     size++;
 }
 
-string LList::GetAt(int x)
+template <class T>
+T LList<T>::GetAt(int x)
 {
-    LLNode* tmp = head;
+    LLNode<T>* tmp = head;
 
     if (x >= 1 && x <= size)
     {
@@ -73,9 +78,10 @@ string LList::GetAt(int x)
     return "0cb7c3e488b4184f68801f9898e63b4471dfe1d72487e3046de60c105cc4b043"; // sha-256 hash, for edge cases
 }
 
-void LList::ReplaceInfoAtNode(int x, string line)
+template <class T>
+void LList<T>::ReplaceInfoAtNode(int x, T line)
 {
-    LLNode* tmp = head;
+    LLNode<T>* tmp = head;
 
     for (int i = 1; i < x && tmp != NULL; i++)
     {
@@ -85,15 +91,17 @@ void LList::ReplaceInfoAtNode(int x, string line)
     tmp->info = line;
 }
 
-int LList::GetSize()
+template <class T>
+int LList<T>::GetSize()
 {
     return size;
 }
 
-string LList::deleteFromHead()
+template <class T>
+T LList<T>::deleteFromHead()
 {
-    string el = head->info;
-    LLNode* tmp = head;
+    T el = head->info;
+    LLNode<T>* tmp = head;
 
     if (head == tail)
     {
@@ -109,9 +117,10 @@ string LList::deleteFromHead()
     return el;
 }
 
-string LList::deleteFromTail()
+template <class T>
+T LList<T>::deleteFromTail()
 {
-    string el = tail->info;
+    T el = tail->info;
 
     if (head == tail)
     {
@@ -120,7 +129,7 @@ string LList::deleteFromTail()
     }
     else
     {
-        LLNode* tmp;
+        LLNode<T>* tmp;
 
         for (tmp = head; tmp->next != tail; tmp = tmp->next);
 
@@ -133,7 +142,8 @@ string LList::deleteFromTail()
     return el;
 }
 
-void LList::deleteNode(string el)
+template <class T>
+void LList<T>::deleteNode(const T el)
 {
     if (head != 0)
     {
@@ -144,13 +154,13 @@ void LList::deleteNode(string el)
         }
         else if (el == head->info)
         {
-            LLNode* tmp = head;
+            LLNode<T>* tmp = head;
             head = head->next;
             delete tmp;
         }
         else
         {
-            LLNode* pred, * tmp;
+            LLNode<T>* pred, * tmp;
 
             for (pred = head, tmp = head->next;
                 tmp != 0 && !(tmp->info == el);
@@ -171,18 +181,20 @@ void LList::deleteNode(string el)
     }
 }
 
-bool LList::isInList(string el) const
+template <class T>
+bool LList<T>::isInList(T el) const
 {
-    LLNode* tmp;
+    LLNode<T>* tmp;
 
     for (tmp = head; tmp != 0 && !(tmp->info == el); tmp = tmp->next);
 
     return tmp != 0;
 }
 
-void LList::printAll() const
+template <class T>
+void LList<T>::printAll() const
 {
-    for (LLNode* tmp = head; tmp != 0; tmp = tmp->next)
+    for (LLNode<T>* tmp = head; tmp != 0; tmp = tmp->next)
     {
         cout << tmp->info << " ";
     }
