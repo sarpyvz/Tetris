@@ -16,45 +16,54 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClCompile>
-    <ClCompile Include="board.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClCompile>
-    <ClCompile Include="LList.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+      <Filter>Kaynak Dosyaları</Filter>
     </ClCompile>
     <ClCompile Include="position.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClCompile>
-    <ClCompile Include="colors.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClCompile>
-    <ClCompile Include="piece.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+      <Filter>Kaynak Dosyaları</Filter>
     </ClCompile>
     <ClCompile Include="pieces.cpp">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="piece.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="LList.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="colors.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="board.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="board.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClInclude>
-    <ClInclude Include="LList.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
-    </ClInclude>
-    <ClInclude Include="piece.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Kaynak Dosyaları</Filter>
     </ClInclude>
     <ClInclude Include="position.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClInclude>
+    <ClInclude Include="piece.h">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClInclude>
+    <ClInclude Include="LList.h">
+      <Filter>Kaynak Dosyaları</Filter>
     </ClInclude>
     <ClInclude Include="colors.h">
-      <Filter>Üst Bilgi Dosyaları</Filter>
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClInclude>
+    <ClInclude Include="board.h">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Kaynak Dosyaları</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

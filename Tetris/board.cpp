@@ -9,7 +9,7 @@ Board::Board()
 	numCols = 10;
 	cellSize = 30;
 	Init();
-	GetCellColors();
+	colors = GetCellColors();
 
 }
 
@@ -67,8 +67,25 @@ void Board::Draw(sf::RenderWindow& target)
 			sf::Vector2f position(column * cellSize+1, row * cellSize+1);
 			square.setPosition(position);
 			square.setSize(sf::Vector2f(cellSize -1 ,cellSize-1));
-			square.setFillColor(colors[cellValue]);
+			square.setFillColor(colors[cellValue]);//GetAt(cellValue)
 			target.draw(square);
 		}
 	}
 }
+
+bool Board::IsCellOutside(int row, int column)
+{
+	if (row >= 0 && row < numRows && column >= 0 && column < numCols)
+	{
+		return false;
+	}
+	return true;
+	
+}
+
+bool Board::IsCellEmpty(int row, int column)
+{
+	return board[row][column] == 0;
+
+}
+

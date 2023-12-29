@@ -15,7 +15,7 @@ public:
     }
     LLNode(T el, LLNode<T>* ptr = 0)
     {
-        info = value;
+        info = el;
         next = ptr;
     }
 
@@ -44,17 +44,21 @@ public:
     int GetSize(void);
     T GetAt(int);
     void ReplaceInfoAtNode(int, T);
-    void addToHead(T);
+    void addToHead(const T &el);
     void addToMiddle(int, T);
-    void addToTail(T);
+    void addToTail(const T &el);
     T deleteFromHead();
     T deleteFromTail();
     void deleteNode(const T);
-    bool isInList(T) const;
+    bool isInList(const T &el) const;
     void printAll() const;
+    T begin();
+    T end();
+
 
 private:
     LLNode<T> *head, * tail;
     int size;
 };
+
 

@@ -13,7 +13,7 @@ LList<T>::~LList()
 }
 
 template <class T>
-void LList<T>::addToHead(T el)
+void LList<T>::addToHead(const T &el)
 {
     head = new LLNode(el, head);
     if (tail == 0)
@@ -45,7 +45,7 @@ void LList<T>::addToMiddle(int x, T el)
 }
 
 template <class T>
-void LList<T>::addToTail(T el)
+void LList<T>::addToTail(const T &el)
 {
     if (tail != 0)
     {
@@ -75,7 +75,7 @@ T LList<T>::GetAt(int x)
         return tmp->info;
     }
 
-    return "0cb7c3e488b4184f68801f9898e63b4471dfe1d72487e3046de60c105cc4b043"; // sha-256 hash, for edge cases
+    // return "0cb7c3e488b4184f68801f9898e63b4471dfe1d72487e3046de60c105cc4b043"; // sha-256 hash, for edge cases
 }
 
 template <class T>
@@ -182,7 +182,7 @@ void LList<T>::deleteNode(const T el)
 }
 
 template <class T>
-bool LList<T>::isInList(T el) const
+bool LList<T>::isInList(const T &el) const
 {
     LLNode<T>* tmp;
 
@@ -201,3 +201,16 @@ void LList<T>::printAll() const
 
     cout << endl;
 }
+
+template <class T>
+T LList<T>::begin()
+{
+    return LList<T>::GetAt(0);
+}
+
+template <class T>
+T LList<T>::end()
+{
+    return LList<T>::GetAt(size -1 );
+}
+
