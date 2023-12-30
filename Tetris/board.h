@@ -15,7 +15,7 @@ public:
 	int board[20][10];
 	bool IsCellOutside(int row, int column);
 	bool IsCellEmpty(int row, int column);
-
+	int ClearFullRows();	
 
 	//LList<sf::Color> Colors;
 	
@@ -27,9 +27,10 @@ private:
 	int numRows;
 	int numCols;
 	int cellSize;
-	//sf::Color* colors = new sf::Color[100];
 	sf::Color* colors = new sf::Color[100];
 	//std::vector<sf::Color> colors;
 	//LList<sf::Color> colors;
-
+	bool IsRowFull(int row);
+	void ClearRow(int row);
+	void MoveRowsDown(int row,int numRows);
 };

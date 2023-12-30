@@ -15,6 +15,7 @@ Game::Game()
 	pieces = GetAllPieces();
 	currentPiece = GetRandomPiece();
 	nextPiece = GetRandomPiece();
+	gameover = false;
 }
 
 Piece Game::GetRandomPiece()
@@ -41,10 +42,14 @@ void Game::Draw(sf::RenderWindow& target)
 	currentPiece.Draw(target);
 }
 
-void Game::HandleInput(sf::Keyboard::Key key)
+void Game::HandleInput(sf::Keyboard::Key keyPressed)
 {
-	//sf::Keyboard::Key keyPressed = key;
-	switch (key)
+	if (gameover && keyPressed != 0)
+	{
+		gameover = false;
+		Reset();
+	}
+	switch (keyPressed)
 	{
 	case sf::Keyboard::Key::Left:
 		MovePieceLeft();
@@ -63,30 +68,39 @@ void Game::HandleInput(sf::Keyboard::Key key)
 
 void Game::MovePieceLeft()
 {
-	currentPiece.Move(0, -1);
-	if (IsPieceOutside() || PieceFits()== false)
+	if (!gameover) 
 	{
-		currentPiece.Move(0, 1);
+		currentPiece.Move(0, -1);
+		if (IsPieceOutside() || PieceFits() == false)
+		{
+			currentPiece.Move(0, 1);
+		}
 	}
 }
 
 void Game::MovePieceRight()
 {
-	currentPiece.Move(0, 1);
-	if (IsPieceOutside() ||  PieceFits() == false)
+	if (!gameover)
 	{
-		currentPiece.Move(0, -1);
+		currentPiece.Move(0, 1);
+		if (IsPieceOutside() || PieceFits() == false)
+		{
+			currentPiece.Move(0, -1);
+		}
 	}
 }
 
 void Game::MovePieceDown()
 {
-	currentPiece.Move(1, 0);
-	if (IsPieceOutside() || PieceFits() == false)
+	if (!gameover)
 	{
-		currentPiece.Move(-1, 0);
-		LockPiece();
-	}	
+		currentPiece.Move(1, 0);
+		if (IsPieceOutside() || PieceFits() == false)
+		{
+			currentPiece.Move(-1, 0);
+			LockPiece();
+		}
+	}
 }
 
 bool Game::IsPieceOutside()
@@ -121,7 +135,13 @@ void Game::LockPiece()
 		board.board[item.row][item.column] = currentPiece.id;
 	}
 	currentPiece = nextPiece;
+	if (PieceFits() == false)
+	{
+		gameover = true;
+
+	}
 	nextPiece = GetRandomPiece();
+	int completeRows = board.ClearFullRows();
 }
 
 bool Game::PieceFits()
@@ -137,3 +157,11 @@ bool Game::PieceFits()
 	}
 	return true;
  }
+
+void Game::Reset()
+{
+	board.Init();
+	pieces = GetAllPieces();
+	currentPiece = GetRandomPiece();
+	nextPiece = GetRandomPiece();
+}

@@ -10,7 +10,7 @@ const sf::Color purple(166, 0, 247, 255);
 const sf::Color cyan(21, 204, 209, 255);
 const sf::Color blue(13, 64, 216, 255);
 
-//std::vector<sf::Color> GetCellColors()
+
 //LList<sf::Color> GetCellColors()
 //{
 //	LList<sf::Color> colors_;
@@ -27,7 +27,7 @@ const sf::Color blue(13, 64, 216, 255);
 //
 //	return colors_;
 //}
-
+//
 sf::Color* GetCellColors() {
 	sf::Color* colors_ = new sf::Color[100];
 	colors_[0] = grey;
@@ -41,3 +41,8 @@ sf::Color* GetCellColors() {
 
 	return colors_;
 }
+
+//std::vector<sf::Color> GetCellColors()
+//{
+//	return { grey,green,red,orange,yellow,purple,cyan,blue };
+//}

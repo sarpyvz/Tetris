@@ -17,6 +17,8 @@ public:
 	void MovePieceLeft();
 	void MovePieceRight();
 	void MovePieceDown();
+	bool gameover;
+
 
 private:
 	//Piece* pieces = new Piece[100];
@@ -27,5 +29,6 @@ private:
 	Piece nextPiece;
 	void LockPiece();
 	bool PieceFits();
+	void Reset();
 
 };

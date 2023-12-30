@@ -5,7 +5,7 @@
 
 double lastUpdateTime = 0;
 
-static bool EventTriggered(double interval,sf::Clock clock)
+bool EventTriggered(double interval,sf::Clock clock)
 {
     sf::Time totalTime = clock.getElapsedTime();
     double currenTime = totalTime.asSeconds();
@@ -37,14 +37,15 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed)
+            {
+                game.HandleInput(event.key.code);
+            }
+            
         } 
 
         
-        if (event.type == sf::Event::KeyPressed)
-        {
-            game.HandleInput(event.key.code);
-        }
-        if (EventTriggered(0.2,clock))
+        if (EventTriggered(0.2, clock))
         {
             game.MovePieceDown();
         }
@@ -53,6 +54,7 @@ int main()
 
         game.Draw(window);
         window.display();
+        
     }
 
     return 0;

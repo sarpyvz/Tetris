@@ -89,3 +89,51 @@ bool Board::IsCellEmpty(int row, int column)
 
 }
 
+int Board::ClearFullRows()
+{
+	int complete_rows = 0;
+	for (int row = numRows - 1; row >= 0; row--)
+	{
+		if (IsRowFull(row))
+		{
+			ClearRow(row);	
+			complete_rows++;
+		}
+		else if (complete_rows > 0)
+		{
+			MoveRowsDown(row, complete_rows);
+		}
+
+	}
+	return complete_rows;
+}
+
+bool Board::IsRowFull(int row)
+{
+	for (int column = 0; column < numCols; column++)
+	{
+		if (board[row][column] == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void Board::ClearRow(int row)
+{
+	for (int column = 0; column < numCols; column)
+	{
+		board[row][column] = 0;
+	}
+}
+
+void Board::MoveRowsDown(int row, int numRows)
+{
+	for (int column = 0; column < numCols; column++)
+	{
+		board[row + numRows][column] = board[row][column];
+		board[row][column] = 0;
+	} 
+}
+
