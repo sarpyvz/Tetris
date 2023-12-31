@@ -25,21 +25,21 @@
 //	return (this->logic == this->Rsize);
 //}
 //
-////template<class T>
-////void Vector<T>::change() {
-////	int newSize = this->Rsize << 1;
-////	newSize++;
-////
-////	T* aux = new T[newSize];
-////
-////	for (int i = 0; i < this->logic; i++) aux[i] = this->vet[i];
-////
-////
-////	delete[] this->vet;
-////
-////	this->vet = aux;
-////	this->Rsize = newSize;
-////}
+//template<class T>
+//void Vector<T>::change() {
+//	int newSize = this->Rsize << 1;
+//	newSize++;
+//
+//	T* aux = new T[newSize];
+//
+//	for (int i = 0; i < this->logic; i++) aux[i] = this->vet[i];
+//
+//
+//	delete[] this->vet;
+//
+//	this->vet = aux;
+//	this->Rsize = newSize;
+//}
 //
 //template<class T>
 //Vector<T>::Vector() {
@@ -85,11 +85,11 @@
 //	return this->vet[index];
 //}
 //
-////template <class T>
-////T& Vector<T>::operator = (const Vector<T>& obj) {
-////	Rsize = obj.Rsize;
-////	data = new T[Rsize - 1];
-////	for (int i = 0; i <= size; i++) {
-////		data[i] = obj.
-////	}
-////}
+//template <class T>
+//T& Vector<T>::operator = (const Vector<T>& obj) {
+//	Rsize = obj.Rsize;
+//	data = new T[Rsize - 1];
+//	for (int i = 0; i <= size; i++) {
+//		data[i] = obj.
+//	}
+//}

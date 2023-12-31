@@ -12,7 +12,7 @@ Piece::Piece()
 
 }
 
-void Piece::Draw(sf::RenderWindow& target)
+void Piece::Draw(sf::RenderWindow& target, int X_cor,int Y_cor)
 {
 	/*LList<Position> tiles;
 	tiles.addToTail(cells[rotationState].GetAt(0)); 
@@ -28,7 +28,7 @@ void Piece::Draw(sf::RenderWindow& target)
 	{
 		//Position item = tiles[i];
 		sf::RectangleShape shape;
-		sf::Vector2f position(item.column * cellSize + 1, item.row * cellSize + 1);
+		sf::Vector2f position(item.column * cellSize + X_cor, item.row * cellSize + Y_cor);
 		shape.setPosition(position);
 		shape.setSize(sf::Vector2f(cellSize - 1, cellSize - 1));
 		shape.setFillColor(colors[id]);

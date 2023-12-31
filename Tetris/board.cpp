@@ -64,7 +64,7 @@ void Board::Draw(sf::RenderWindow& target)
 		{
 			int cellValue = board[row][column];
 			sf::RectangleShape square;
-			sf::Vector2f position(column * cellSize+1, row * cellSize+1);
+			sf::Vector2f position(column * cellSize+11, row * cellSize+11);
 			square.setPosition(position);
 			square.setSize(sf::Vector2f(cellSize -1 ,cellSize-1));
 			square.setFillColor(colors[cellValue]);//GetAt(cellValue)
@@ -122,7 +122,7 @@ bool Board::IsRowFull(int row)
 
 void Board::ClearRow(int row)
 {
-	for (int column = 0; column < numCols; column)
+	for (int column = 0; column < numCols; column++)
 	{
 		board[row][column] = 0;
 	}

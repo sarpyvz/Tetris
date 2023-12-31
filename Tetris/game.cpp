@@ -1,6 +1,5 @@
 #include "game.h"
 #include <random>
-#include <SFML/Graphics.hpp>
 
 Game::Game() 
 {
@@ -16,6 +15,22 @@ Game::Game()
 	currentPiece = GetRandomPiece();
 	nextPiece = GetRandomPiece();
 	gameover = false;
+	score = 0;
+	soundBuffer.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/AcrosstheStarsLoveTheme.ogg");
+	sound.setBuffer(soundBuffer);
+	sound.setVolume(50);
+	sound.play();
+	soundBuffRot.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/lightsaber-ignition.wav");
+	rotateSound.setBuffer(soundBuffRot);
+	soundBuffClear.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/i-have-a-bad-feeling-about-this.wav");
+	clearSound.setBuffer(soundBuffClear);
+}
+
+Game::~Game()
+{
+	sound.stop();
+	clearSound.stop();
+	rotateSound.stop();
 }
 
 Piece Game::GetRandomPiece()
@@ -39,7 +54,21 @@ std::vector<Piece> Game::GetAllPieces()
 void Game::Draw(sf::RenderWindow& target)
 {
 	board.Draw(target);
-	currentPiece.Draw(target);
+	currentPiece.Draw(target,11,11);
+	switch(nextPiece.id)
+	{
+	case 3:
+		nextPiece.Draw(target, 255, 290);
+		break;
+	case 4:
+		nextPiece.Draw(target,255, 280);
+		break;
+	default:
+		nextPiece.Draw(target,270, 270);
+		break;
+
+	}
+	
 }
 
 void Game::HandleInput(sf::Keyboard::Key keyPressed)
@@ -59,6 +88,7 @@ void Game::HandleInput(sf::Keyboard::Key keyPressed)
 		break;
 	case sf::Keyboard::Key::Down:
 		MovePieceDown();
+		UpdateScore(0, 1);
 		break;
 	case sf::Keyboard::Key::Up:
 		RotateBlock();
@@ -125,6 +155,10 @@ void Game::RotateBlock()
 	{
 		currentPiece.UndoRotation();
 	}
+	else
+	{
+		rotateSound.play();
+	}
 }
 
 void Game::LockPiece()
@@ -142,6 +176,11 @@ void Game::LockPiece()
 	}
 	nextPiece = GetRandomPiece();
 	int completeRows = board.ClearFullRows();
+	if (completeRows > 0)
+	{
+		clearSound.play();
+		UpdateScore(completeRows, 0);
+	}
 }
 
 bool Game::PieceFits()
@@ -164,4 +203,24 @@ void Game::Reset()
 	pieces = GetAllPieces();
 	currentPiece = GetRandomPiece();
 	nextPiece = GetRandomPiece();
+	score = 0;
+}
+
+void Game::UpdateScore(int lines_cleared, int move_down_points)
+{
+	switch (lines_cleared)
+	{
+	case 1:
+		score += 100;
+		break;
+	case 2:
+		score += 300;
+		break;
+	case 3:
+		score += 500;
+		break;
+	default:
+		break;
+	}
+	score += move_down_points; 
 }

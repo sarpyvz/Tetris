@@ -16,7 +16,7 @@ public:
 	std::map<int, std::vector<Position>> cells;
 	//std::map<int, Vector<Position>>cells;
 
-	void Draw(sf::RenderWindow& target);
+	void Draw(sf::RenderWindow& target,int X_cor,int Y_cor);
 	std::vector<Position> GetCellPositions();
 	//Vector<Position> GetCellPositions();
 	void Move(int rows, int columns);

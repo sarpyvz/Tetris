@@ -1,14 +1,18 @@
 #pragma once
+
 #include "board.h"
 #include "pieces.cpp"
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Vector.hpp"
+#include <SFML/Audio.hpp>
+
 
 class Game 
 {
 public:
 	Game();
+	~Game();
 	Piece GetRandomPiece();
 	std::vector<Piece> GetAllPieces();
 	void Draw(sf::RenderWindow& target);
@@ -18,6 +22,13 @@ public:
 	void MovePieceRight();
 	void MovePieceDown();
 	bool gameover;
+	int score;
+	sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
+	sf::SoundBuffer soundBuffRot;
+	sf::Sound rotateSound;
+	sf::SoundBuffer soundBuffClear;
+	sf::Sound clearSound;
 
 
 private:
@@ -30,5 +41,7 @@ private:
 	void LockPiece();
 	bool PieceFits();
 	void Reset();
+	void UpdateScore(int lines_cleared,int move_down_points);
+
 
 };

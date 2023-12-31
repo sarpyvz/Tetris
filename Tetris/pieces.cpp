@@ -274,7 +274,7 @@ public:
 		cells[2] = { Position(1, 1), Position(1, 2), Position(2, 0), Position(2, 1) };
 		cells[3] = { Position(0, 0), Position(1, 0), Position(1, 1), Position(2, 1) };
 
-		//MY VECTOR PIMP
+		//MY VECTOR IMP
 		/*cells[0].push_back(Position(0, 1));
 		cells[0].push_back(Position(0, 2));
 		cells[0].push_back(Position(1, 0));
@@ -391,7 +391,6 @@ public:
 		position3.addToTail(Position(2, 0));
 		cells[3] = position3;*/
 
-		// VECTOR 
 		cells[0] = { Position(0, 0), Position(0, 1), Position(1, 1), Position(1, 2) };
 		cells[1] = { Position(0, 2), Position(1, 1), Position(1, 2), Position(2, 1) };
 		cells[2] = { Position(1, 0), Position(1, 1), Position(2, 1), Position(2, 2) };

@@ -9,7 +9,7 @@ const sf::Color yellow(237, 234, 4, 255);
 const sf::Color purple(166, 0, 247, 255);
 const sf::Color cyan(21, 204, 209, 255);
 const sf::Color blue(13, 64, 216, 255);
-
+const sf::Color darkBlue(44,44,127,255);
 
 //LList<sf::Color> GetCellColors()
 //{
@@ -42,7 +42,3 @@ sf::Color* GetCellColors() {
 	return colors_;
 }
 
-//std::vector<sf::Color> GetCellColors()
-//{
-//	return { grey,green,red,orange,yellow,purple,cyan,blue };
-//}
