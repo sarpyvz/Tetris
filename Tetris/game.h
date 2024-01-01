@@ -17,7 +17,7 @@ public:
 	std::vector<Piece> GetAllPieces();
 	void Draw(sf::RenderWindow& target);
 	Board board;
-	void HandleInput(sf::Keyboard::Key key);
+	void HandleInput(sf::Keyboard::Key key);//,/*sf::RenderWindow& target*/);
 	void MovePieceLeft();
 	void MovePieceRight();
 	void MovePieceDown();
@@ -29,6 +29,7 @@ public:
 	sf::Sound rotateSound;
 	sf::SoundBuffer soundBuffClear;
 	sf::Sound clearSound;
+	//void HoldPiece(sf::RenderWindow& target);
 
 
 private:
@@ -42,6 +43,7 @@ private:
 	bool PieceFits();
 	void Reset();
 	void UpdateScore(int lines_cleared,int move_down_points);
+	
 
 
 };

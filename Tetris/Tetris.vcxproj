@@ -138,7 +138,6 @@
     <ClCompile Include="piece.cpp" />
     <ClCompile Include="pieces.cpp" />
     <ClCompile Include="position.cpp" />
-    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />

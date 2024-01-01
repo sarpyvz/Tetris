@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "LList.h"
 
 extern const sf::Color grey;
 extern const sf::Color green;

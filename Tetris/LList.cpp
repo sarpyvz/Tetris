@@ -1,5 +1,4 @@
 #include "LList.h"
-#include <string>
 
 template <class T>
 LList<T>::~LList()

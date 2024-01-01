@@ -71,7 +71,7 @@ void Game::Draw(sf::RenderWindow& target)
 	
 }
 
-void Game::HandleInput(sf::Keyboard::Key keyPressed)
+void Game::HandleInput(sf::Keyboard::Key keyPressed/*sf::RenderWindow& target*/)
 {
 	if (gameover && keyPressed != 0)
 	{
@@ -93,6 +93,9 @@ void Game::HandleInput(sf::Keyboard::Key keyPressed)
 	case sf::Keyboard::Key::Up:
 		RotateBlock();
 		break;
+	/*case sf::Keyboard::Key::C:
+		HoldPiece(target);
+		break;*/
 	}
 }
 
@@ -224,3 +227,10 @@ void Game::UpdateScore(int lines_cleared, int move_down_points)
 	}
 	score += move_down_points; 
 }
+
+//void Game::HoldPiece(sf::RenderWindow& target)
+//{
+//	Piece holdPiece = currentPiece;
+//	currentPiece = nextPiece;
+//	holdPiece.Draw(target, 270, 530);
+//}

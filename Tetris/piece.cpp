@@ -14,12 +14,6 @@ Piece::Piece()
 
 void Piece::Draw(sf::RenderWindow& target, int X_cor,int Y_cor)
 {
-	/*LList<Position> tiles;
-	tiles.addToTail(cells[rotationState].GetAt(0)); 
-	tiles.addToTail(cells[rotationState].GetAt(1)); 
-	tiles.addToTail(cells[rotationState].GetAt(2)); 
-	tiles.addToTail(cells[rotationState].GetAt(3)); */
-
 	std::vector<Position> tiles = GetCellPositions();
 	//Vector<Position> tiles = GetCellPositions();
 

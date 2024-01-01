@@ -30,14 +30,14 @@ sf::Vector2f measureText(const std::string& text, const sf::Font& font, unsigned
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(500, 620), "Tetris!");
+    sf::RenderWindow window(sf::VideoMode(700, 620), "Tetris!");
     window.setFramerateLimit(60);
     sf::Clock clock;
 
 
     //----------FONT AND TEXT UI-----------------------------// 
     sf::Font font;
-    font.loadFromFile("C:\\Users\\sarpy\\OneDrive\\Masaüstü\\fast99.ttf");
+    font.loadFromFile("C:\\Users\\sarpy\\source\\repos\\Tetris\\font\\fast99.ttf");
     
 
     sf::Text score;
@@ -48,20 +48,20 @@ int main()
     sf::Vector2f position(365, 15);
     score.setPosition(position);
     
-    sf::Text text2;
-    text2.setFont(font);
-    text2.setString("NEXT");
-    text2.setCharacterSize(20);
-    text2.setFillColor(sf::Color::White);
+    sf::Text text_next;
+    text_next.setFont(font);
+    text_next.setString("NEXT");
+    text_next.setCharacterSize(20);
+    text_next.setFillColor(sf::Color::White);
     sf::Vector2f position2(370, 175);
-    text2.setPosition(position2);
+    text_next.setPosition(position2);
   
     sf::Text text_gameover;
     text_gameover.setFont(font);
     text_gameover.setString("GAME OVER");
     text_gameover.setCharacterSize(20);
     text_gameover.setFillColor(sf::Color::White);
-    sf::Vector2f position3(320, 450);
+    sf::Vector2f position3(520, 570);
     text_gameover.setPosition(position3);
 
     sf::RectangleShape rectangle;
@@ -70,15 +70,28 @@ int main()
     rectangle.setSize(sf::Vector2f(170,60));
     rectangle.setFillColor(darkBlue);
 
-    sf::RectangleShape rectangle2;
+    sf::RectangleShape rectangle_nxt;
     sf::Vector2f position5(320, 215);
-    rectangle2.setPosition(position5);
-    rectangle2.setSize(sf::Vector2f(170, 180));
-    rectangle2.setFillColor(darkBlue);
+    rectangle_nxt.setPosition(position5);
+    rectangle_nxt.setSize(sf::Vector2f(170, 180));
+    rectangle_nxt.setFillColor(darkBlue);
+
+    sf::Text Hold_txt;
+    Hold_txt.setFont(font);
+    Hold_txt.setString("HOLD");
+    Hold_txt.setCharacterSize(20);
+    Hold_txt.setFillColor(sf::Color::White);
+    sf::Vector2f position_hol(370, 415);
+    Hold_txt.setPosition(position_hol);
+
+    sf::RectangleShape rectangle_hold;
+    sf::Vector2f position_hold(320, 450);
+    rectangle_hold.setPosition(position_hold);
+    rectangle_hold.setSize(sf::Vector2f(170, 150));
+    rectangle_hold.setFillColor(darkBlue);
    
     //----------------------------------------------------------------//
     Game game = Game();
-
 
     while (window.isOpen())
     {
@@ -109,7 +122,8 @@ int main()
         }
 
         window.draw(score);
-        window.draw(text2);
+        window.draw(text_next);
+        window.draw(Hold_txt);
         window.draw(rectangle);
 
         /// --------- FOR SCORE VALUES --------- //
@@ -127,7 +141,8 @@ int main()
         // -----------------------------------------//
 
         window.draw(scoretext);
-        window.draw(rectangle2);
+        window.draw(rectangle_nxt);
+        window.draw(rectangle_hold);
         game.Draw(window);
         window.display();
         
