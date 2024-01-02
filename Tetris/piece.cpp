@@ -81,3 +81,4 @@ void Piece::UndoRotation()
 		rotationState = cells.size() - 1;
 	}
 }
+

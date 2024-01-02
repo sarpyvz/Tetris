@@ -1,5 +1,7 @@
 #include "game.h"
 #include <random>
+#include <algorithm>
+
 
 Game::Game() 
 {
@@ -16,11 +18,11 @@ Game::Game()
 	nextPiece = GetRandomPiece();
 	gameover = false;
 	score = 0;
-	soundBuffer.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/AcrosstheStarsLoveTheme.ogg");
+	soundBuffer.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/wedding-love-story.wav");
 	sound.setBuffer(soundBuffer);
 	sound.setVolume(50);
 	sound.play();
-	soundBuffRot.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/lightsaber-ignition.wav");
+	soundBuffRot.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/Sounds_rotate.wav");
 	rotateSound.setBuffer(soundBuffRot);
 	soundBuffClear.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/i-have-a-bad-feeling-about-this.wav");
 	clearSound.setBuffer(soundBuffClear);
@@ -51,6 +53,12 @@ std::vector<Piece> Game::GetAllPieces()
 	return { IPiece(),  JPiece() ,LPiece(), OPiece() ,SPiece() ,TPiece(),ZPiece() };
 }
 
+//Vector<Piece> Game::GetAllPieces()
+//{
+//	
+//  return pieces;
+//}
+
 void Game::Draw(sf::RenderWindow& target)
 {
 	board.Draw(target);
@@ -71,7 +79,7 @@ void Game::Draw(sf::RenderWindow& target)
 	
 }
 
-void Game::HandleInput(sf::Keyboard::Key keyPressed/*sf::RenderWindow& target*/)
+void Game::HandleInput(sf::Keyboard::Key keyPressed,sf::RenderWindow& target)
 {
 	if (gameover && keyPressed != 0)
 	{
@@ -139,8 +147,11 @@ void Game::MovePieceDown()
 bool Game::IsPieceOutside()
 {
 	std::vector<Position> tiles = currentPiece.GetCellPositions();
+	// Vector<Position> tiles = currentPiece.GetCellPositions();
+	//for (int i = 0; i < tiles.size();i++)
 	for (Position item : tiles)
 	{
+		// Position item = tiles[i];
 		if (board.IsCellOutside(item.row, item.column))
 		{
 			return true;
@@ -154,7 +165,7 @@ bool Game::IsPieceOutside()
 void Game::RotateBlock()
 {
 	currentPiece.Rotate();
-	if (IsPieceOutside() ||PieceFits() == false)
+	if (IsPieceOutside() || PieceFits() == false)
 	{
 		currentPiece.UndoRotation();
 	}
@@ -167,8 +178,11 @@ void Game::RotateBlock()
 void Game::LockPiece()
 {
 	std::vector<Position> tiles = currentPiece.GetCellPositions();
+	// Vector<Position> tiles = currentPiece.GetCellPositions();
+	//for (int i = 0; i < tiles.size();i++)
 	for (Position item : tiles)
 	{
+		//Position item = tiles[i];
 		board.board[item.row][item.column] = currentPiece.id;
 	}
 	currentPiece = nextPiece;
@@ -189,8 +203,11 @@ void Game::LockPiece()
 bool Game::PieceFits()
 {
 	std::vector<Position> tiles = currentPiece.GetCellPositions();
+	// Vector<Position> tiles = currentPiece.GetCellPositions();
+	//for (int i = 0; i < tiles.size();i++)
 	for (Position item : tiles)
 	{
+		//Position item = tiles[i];
 		if (board.IsCellEmpty(item.row, item.column) == false)
 		{
 			return false;
@@ -230,7 +247,55 @@ void Game::UpdateScore(int lines_cleared, int move_down_points)
 
 //void Game::HoldPiece(sf::RenderWindow& target)
 //{
-//	Piece holdPiece = currentPiece;
-//	currentPiece = nextPiece;
+//	Piece temp;
+//	
+//	if (std::find(pieces.begin(), pieces.end(), holdPiece) != pieces.end()) 
+//	{
+//		temp = currentPiece;
+//		currentPiece = holdPiece;
+//		holdPiece = currentPiece;
+//	}
+//	else 
+//	{
+//		holdPiece = currentPiece;
+//		currentPiece = nextPiece;
+//	}
+//	
 //	holdPiece.Draw(target, 270, 530);
 //}
+
+//
+//bool Game::GhostPieceFits()
+//{
+//	std::vector<Position> tiles = currentPiece.GetCellPositions();
+//	// Vector<Position> tiles = currentPiece.GetCellPositions();
+//	//for (int i = 0; i < tiles.size();i++)
+//	for (Position item : tiles)
+//	{
+//		//Position item = tiles[i];
+//		if (board.IsCellEmpty(item.row, item.column) == false)
+//		{
+//			return false;
+//		}
+//
+//	}
+//	return true;
+//}
+//
+//
+//void Game::GhostPiece(sf::RenderWindow& target)
+//{
+//	Piece GhostPiece;
+//	GhostPiece = currentPiece;
+//	GhostPiece.id = 8;
+//	while (GhostPieceFits())
+//	{
+//		GhostPiece.Move(1, 0);
+//	}
+//	std::vector<Position> ghost_tiles = GhostPiece.GetCellPositions();
+//	for (Position item : ghost_tiles)
+//	{
+//		GhostPiece.Draw(target,item.row,item.column);
+//	}
+//}
+//

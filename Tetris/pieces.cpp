@@ -1,15 +1,15 @@
 #include "piece.h"
 #include "position.h"
-// #include "Vector.hpp"
+
 #pragma once
+
 
 class LPiece : public Piece {
 public:
 	LPiece() {
 		id = 1;
-		// CREATING A LINKED LIST THAT CONTAINS POSITIONS AND ADD IT TO CELL MAP .  RIGHT NOW IT WILL BE TOO LONG COULDNT FIND A SHORTCUT
-
-		// COMMENTED GUYS ARE FOR WHEN USING LLIST 
+		
+		// COMMENTED  ARE FOR WHEN USING LLIST 
 		/*LList<Position> position0;
 		position0.addToTail(Position(0, 2));
 		position0.addToTail(Position(1, 0));
@@ -38,7 +38,7 @@ public:
 		position3.addToTail(Position(2, 1)); 
 		cells[3] = position3;*/
 
-		// VECTOR USING 
+		 
 		cells[0] = { Position(0, 2), Position(1, 0), Position(1, 1), Position(1, 2) };
 		cells[1] = { Position(0, 1), Position(1, 1), Position(2, 1), Position(2, 2) };
 		cells[2] = { Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 0) };
@@ -99,7 +99,6 @@ public:
 		position3.addToTail(Position(2, 1));
 		cells[3] = position3;*/
 
-		// VECTOR
 		cells[0] = { Position(0, 0), Position(1, 0), Position(1, 1), Position(1, 2) };
 		cells[1] = { Position(0, 1), Position(0, 2), Position(1, 1), Position(2, 1) };
 		cells[2] = { Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 2) };
@@ -160,7 +159,6 @@ public:
 		position3.addToTail(Position(3, 1));
 		cells[3] = position3;*/
 
-		//VECTOR 
 		cells[0] = { Position(1, 0), Position(1, 1), Position(1, 2), Position(1, 3) };
 		cells[1] = { Position(0, 2), Position(1, 2), Position(2, 2), Position(3, 2) };
 		cells[2] = { Position(2, 0), Position(2, 1), Position(2, 2), Position(2, 3) };
@@ -221,7 +219,6 @@ public:
 		position3.addToTail(Position(1, 1));
 		cells[3] = position3;*/
 
-		//VECTOR
 		cells[0] = { Position(0, 0), Position(0, 1), Position(1, 0), Position(1, 1) };
 
 		//MY VECTOR IMP
@@ -268,7 +265,6 @@ public:
 		position3.addToTail(Position(2, 1));
 		cells[3] = position3;*/
 
-		// VECTOR
 		cells[0] = { Position(0, 1), Position(0, 2), Position(1, 0), Position(1, 1) };
 		cells[1] = { Position(0, 1), Position(1, 1), Position(1, 2), Position(2, 2) };
 		cells[2] = { Position(1, 1), Position(1, 2), Position(2, 0), Position(2, 1) };
@@ -330,7 +326,6 @@ public:
 		position3.addToTail(Position(2, 1));
 		cells[3] = position3;*/
 
-		// VECTIR
 		cells[0] = { Position(0, 1), Position(1, 0), Position(1, 1), Position(1, 2) };
 		cells[1] = { Position(0, 1), Position(1, 1), Position(1, 2), Position(2, 1) };
 		cells[2] = { Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1) };

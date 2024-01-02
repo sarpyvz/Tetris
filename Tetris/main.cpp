@@ -103,7 +103,8 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyPressed)
             {
-                game.HandleInput(event.key.code);
+                game.HandleInput(event.key.code,window);
+                
             }
             
         } 
@@ -113,7 +114,7 @@ int main()
         {
             game.MovePieceDown();
         }
-      
+       
         window.clear(sf::Color::Black);
 
         if (game.gameover) 
@@ -138,12 +139,26 @@ int main()
         sf::Vector2f position_sc(320.0f+((170.0f-txtSize.x)/2), 65.0f);
         scoretext.setPosition(position_sc);
 
+
+
+
+     /*   std::string scoreboard =  " BATUHAN  "  + to_string(game.score);
+        sf::Vector2f scoresize = measureText(scoreboard, font, 38);
+        sf::Text scores;
+        scores.setFont(font);
+        scores.setString(scoretxt);
+        scores.setCharacterSize(20);
+        scores.setFillColor(sf::Color::White);
+        sf::Vector2f position_scorebor(520.0f + ((170.0f - txtSize.x) / 2), 65.0f);
+        scoretext.setPosition(position_scorebor);*/
+
         // -----------------------------------------//
 
         window.draw(scoretext);
         window.draw(rectangle_nxt);
         window.draw(rectangle_hold);
         game.Draw(window);
+        //game.GhostPiece(window);
         window.display();
         
     }
