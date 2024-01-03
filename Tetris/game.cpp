@@ -27,6 +27,8 @@ Game::Game()
 	soundBuffClear.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/i-have-a-bad-feeling-about-this.wav");
 	clearSound.setBuffer(soundBuffClear);
 	holdPiece.id = 8;
+	ghostPiece.id = 8;
+
 }
 
 Game::~Game()
@@ -64,18 +66,20 @@ void Game::Draw(sf::RenderWindow& target)
 {
 	board.Draw(target);
 	currentPiece.Draw(target,11,11);
-	ghostPiece.Draw(target,11,11);
+	ghostPiece.Draw(target,25,25);
 	switch(nextPiece.id)
 	{
 	case 3:
 		nextPiece.Draw(target, 255, 290);
+		holdPiece.Draw(target, 255, 340);
 		break;
 	case 4:
 		nextPiece.Draw(target,255, 280);
+		holdPiece.Draw(target,255, 330 );
 		break;
 	default:
 		nextPiece.Draw(target,270, 270);
-		holdPiece.Draw(target, 270, 350);
+		holdPiece.Draw(target, 270, 320);
 		break;
 
 	}
@@ -228,6 +232,7 @@ void Game::Reset()
 	pieces = GetAllPieces();
 	currentPiece = GetRandomPiece();
 	nextPiece = GetRandomPiece();
+
 	score = 0;
 }
 
@@ -250,6 +255,7 @@ void Game::UpdateScore(int lines_cleared, int move_down_points)
 	score += move_down_points; 
 }
 
+
 void Game::HoldPiece()
 {
 	Piece temp;
@@ -266,6 +272,11 @@ void Game::HoldPiece()
 		temp = currentPiece;
 		currentPiece = holdPiece;
 		holdPiece = temp;
+
+		/*while (holdPiece.GetCellPositions() != holdPiece.cells[0])                        
+		{
+			holdPiece.Rotate();
+		}*/
 		//holdPiece.
 	}
 
@@ -306,10 +317,9 @@ bool Game::GhostPieceFits()
 void Game::GhostPiece()
 {
 	ghostPiece = currentPiece;
-	ghostPiece.id = 8;
 	while (GhostPieceFits())
 	{
-		ghostPiece.Move(0, 1);
+		ghostPiece.Move(1, 0);
 	}
 	
 }

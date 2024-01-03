@@ -51,5 +51,6 @@ private:
 	void UpdateScore(int lines_cleared,int move_down_points);
 	Piece holdPiece;
 	Piece ghostPiece;
+	bool HoldPieceFits();
 
 };

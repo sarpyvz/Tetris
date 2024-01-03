@@ -412,8 +412,8 @@ public:
 	}
 
 };
-
-//class ghostPiece : public Piece {
+//
+//class GhostPiece : public Piece {
 //public:
 //	ghostPiece() {
 //		id = 8;
