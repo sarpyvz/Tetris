@@ -89,7 +89,22 @@ int main()
     rectangle_hold.setPosition(position_hold);
     rectangle_hold.setSize(sf::Vector2f(170, 150));
     rectangle_hold.setFillColor(darkBlue);
+
+    sf::Text score_board;
+    score_board.setFont(font);
+    score_board.setString("SCOREBOARD");
+    score_board.setCharacterSize(20);
+    score_board.setFillColor(sf::Color::White);
+    sf::Vector2f position_scrbrd(530, 15);
+    score_board.setPosition(position_scrbrd);
    
+    sf::RectangleShape rectangle_scrbrd;
+    sf::Vector2f position_recbrd(520,55);
+    rectangle_scrbrd.setPosition(position_recbrd);
+    rectangle_scrbrd.setSize(sf::Vector2f(170, 340));
+    rectangle_scrbrd.setFillColor(darkBlue);
+
+
     //----------------------------------------------------------------//
     Game game = Game();
 
@@ -104,7 +119,6 @@ int main()
             if (event.type == sf::Event::KeyPressed)
             {
                 game.HandleInput(event.key.code,window);
-                
             }
             
         } 
@@ -126,6 +140,8 @@ int main()
         window.draw(text_next);
         window.draw(Hold_txt);
         window.draw(rectangle);
+        window.draw(score_board);
+        window.draw(rectangle_scrbrd);
 
         /// --------- FOR SCORE VALUES --------- //
         
@@ -139,18 +155,20 @@ int main()
         sf::Vector2f position_sc(320.0f+((170.0f-txtSize.x)/2), 65.0f);
         scoretext.setPosition(position_sc);
 
-
-
-
-     /*   std::string scoreboard =  " BATUHAN  "  + to_string(game.score);
-        sf::Vector2f scoresize = measureText(scoreboard, font, 38);
-        sf::Text scores;
-        scores.setFont(font);
-        scores.setString(scoretxt);
-        scores.setCharacterSize(20);
-        scores.setFillColor(sf::Color::White);
-        sf::Vector2f position_scorebor(520.0f + ((170.0f - txtSize.x) / 2), 65.0f);
-        scoretext.setPosition(position_scorebor);*/
+       // SCORE BOARD 
+       for (int i = 0; i < game.scores.size(); i++)
+       {
+                std::string scoreold = to_string(game.scores[i]);
+                sf::Vector2f scoresize = measureText(scoreold, font, 38);
+                sf::Text scoreol;
+                scoreol.setFont(font);
+                scoreol.setString(scoreold);
+                scoreol.setCharacterSize(20);
+                scoreol.setFillColor(sf::Color::White);
+                sf::Vector2f position_scol(320.0f + ((170.0f - scoresize.x) / 2) + 200, 65.0f + i * 25 );
+                scoreol.setPosition(position_scol);
+                window.draw(scoreol);
+       }
 
         // -----------------------------------------//
 

@@ -49,7 +49,7 @@ std::vector<Position> Piece::GetCellPositions()
 	return movedTiles;
 }
 
-// MY VECTOR IMPLEMENT
+// 
 //Vector<Position> Piece::GetCellPositions()
 //{
 //	Vector<Position> tiles = cells[rotationState];

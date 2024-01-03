@@ -14,13 +14,13 @@ public:
 	//std::map<int, LList<Position>> cells;
 	std::map<int, std::vector<Position>> cells;
 	//std::map<int, Vector<Position>>cells;
-
 	void Draw(sf::RenderWindow& target,int X_cor,int Y_cor);
 	std::vector<Position> GetCellPositions();
 	//Vector<Position> GetCellPositions();
 	void Move(int rows, int columns);
 	void Rotate();
 	void UndoRotation();
+	
 
 private:
 	int cellSize;

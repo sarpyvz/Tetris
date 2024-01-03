@@ -412,3 +412,13 @@ public:
 	}
 
 };
+
+//class ghostPiece : public Piece {
+//public:
+//	ghostPiece() {
+//		id = 8;
+//
+//		cells[0] = { Position(0,0),Position(0,0) ,Position(0,0) ,Position(0,0) };
+//	}
+//
+//};

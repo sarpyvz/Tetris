@@ -23,6 +23,7 @@ public:
 	void MovePieceRight();
 	void MovePieceDown();
 	bool gameover;
+	std::vector<int> scores;
 	int score;
 	sf::SoundBuffer soundBuffer;
 	sf::Sound sound;
@@ -30,9 +31,9 @@ public:
 	sf::Sound rotateSound;
 	sf::SoundBuffer soundBuffClear;
 	sf::Sound clearSound;
-	//void HoldPiece(sf::RenderWindow& target);
-
-	//void GhostPiece(sf::RenderWindow& target);
+	void HoldPiece();
+	void GhostPiece();
+	void BoardShrink();
 
 private:
 	//Piece* pieces = new Piece[100];
@@ -44,10 +45,11 @@ private:
 	Piece nextPiece;
 	void LockPiece();
 	bool PieceFits();
+	bool GhostPieceFits();
 	//bool GhostPieceFits();
 	void Reset();
 	void UpdateScore(int lines_cleared,int move_down_points);
 	Piece holdPiece;
-
+	Piece ghostPiece;
 
 };

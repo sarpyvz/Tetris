@@ -21,7 +21,8 @@ public:
 	
 	//Vector<sf::Color> Colors;
 	//std::vector<sf::Color> colors;
-	
+	void DecreaseNumRow(int n);
+
 
 private:
 	int numRows;

@@ -26,6 +26,7 @@ Game::Game()
 	rotateSound.setBuffer(soundBuffRot);
 	soundBuffClear.loadFromFile("C:/Users/sarpy/source/repos/Tetris/Sounds/i-have-a-bad-feeling-about-this.wav");
 	clearSound.setBuffer(soundBuffClear);
+	holdPiece.id = 8;
 }
 
 Game::~Game()
@@ -63,6 +64,7 @@ void Game::Draw(sf::RenderWindow& target)
 {
 	board.Draw(target);
 	currentPiece.Draw(target,11,11);
+	ghostPiece.Draw(target,11,11);
 	switch(nextPiece.id)
 	{
 	case 3:
@@ -73,6 +75,7 @@ void Game::Draw(sf::RenderWindow& target)
 		break;
 	default:
 		nextPiece.Draw(target,270, 270);
+		holdPiece.Draw(target, 270, 350);
 		break;
 
 	}
@@ -101,9 +104,9 @@ void Game::HandleInput(sf::Keyboard::Key keyPressed,sf::RenderWindow& target)
 	case sf::Keyboard::Key::Up:
 		RotateBlock();
 		break;
-	/*case sf::Keyboard::Key::C:
-		HoldPiece(target);
-		break;*/
+	case sf::Keyboard::Key::C:
+		HoldPiece();
+		break;
 	}
 }
 
@@ -186,9 +189,11 @@ void Game::LockPiece()
 		board.board[item.row][item.column] = currentPiece.id;
 	}
 	currentPiece = nextPiece;
+	BoardShrink();
 	if (PieceFits() == false)
 	{
 		gameover = true;
+		scores.push_back(score);
 
 	}
 	nextPiece = GetRandomPiece();
@@ -245,57 +250,86 @@ void Game::UpdateScore(int lines_cleared, int move_down_points)
 	score += move_down_points; 
 }
 
-//void Game::HoldPiece(sf::RenderWindow& target)
-//{
-//	Piece temp;
-//	
-//	if (std::find(pieces.begin(), pieces.end(), holdPiece) != pieces.end()) 
-//	{
-//		temp = currentPiece;
-//		currentPiece = holdPiece;
-//		holdPiece = currentPiece;
-//	}
-//	else 
-//	{
-//		holdPiece = currentPiece;
-//		currentPiece = nextPiece;
-//	}
-//	
-//	holdPiece.Draw(target, 270, 530);
-//}
+void Game::HoldPiece()
+{
+	Piece temp;
 
-//
-//bool Game::GhostPieceFits()
-//{
-//	std::vector<Position> tiles = currentPiece.GetCellPositions();
-//	// Vector<Position> tiles = currentPiece.GetCellPositions();
-//	//for (int i = 0; i < tiles.size();i++)
-//	for (Position item : tiles)
-//	{
-//		//Position item = tiles[i];
-//		if (board.IsCellEmpty(item.row, item.column) == false)
-//		{
-//			return false;
-//		}
-//
-//	}
-//	return true;
-//}
-//
-//
-//void Game::GhostPiece(sf::RenderWindow& target)
-//{
-//	Piece GhostPiece;
-//	GhostPiece = currentPiece;
-//	GhostPiece.id = 8;
-//	while (GhostPieceFits())
-//	{
-//		GhostPiece.Move(1, 0);
-//	}
-//	std::vector<Position> ghost_tiles = GhostPiece.GetCellPositions();
-//	for (Position item : ghost_tiles)
-//	{
-//		GhostPiece.Draw(target,item.row,item.column);
-//	}
-//}
-//
+	if (holdPiece.id == 8)
+	{
+		holdPiece.id = currentPiece.id;
+		holdPiece = currentPiece;
+		currentPiece = nextPiece;
+		nextPiece = GetRandomPiece();
+	}
+	else
+	{
+		temp = currentPiece;
+		currentPiece = holdPiece;
+		holdPiece = temp;
+		//holdPiece.
+	}
+
+	/*if (std::find(pieces.begin(), pieces.end(), holdPiece) != pieces.end()) 
+	{
+		temp = currentPiece;
+		currentPiece = holdPiece;
+		holdPiece = temp;
+		holdPiece.Draw(target, 460, 300);
+	}
+	else 
+	{
+		holdPiece = currentPiece;
+		currentPiece = nextPiece;
+		holdPiece.Draw(target, 460, 300);
+	}*/
+	
+}
+
+
+bool Game::GhostPieceFits()
+{
+	std::vector<Position> tiles = ghostPiece.GetCellPositions();
+	// Vector<Position> tiles = currentPiece.GetCellPositions();
+	//for (int i = 0; i < tiles.size();i++)
+	for (Position item : tiles)
+	{
+		//Position item = tiles[i];
+		if (board.IsCellEmpty(item.row, item.column) == false)
+		{
+			return false;
+		}
+
+	}
+	return true;
+}
+
+void Game::GhostPiece()
+{
+	ghostPiece = currentPiece;
+	ghostPiece.id = 8;
+	while (GhostPieceFits())
+	{
+		ghostPiece.Move(0, 1);
+	}
+	
+}
+
+void Game::BoardShrink()
+{
+	switch(score)
+	{
+	case 300:
+		board.DecreaseNumRow(1);
+	case 500:
+		board.DecreaseNumRow(2);
+	case 700:
+		board.DecreaseNumRow(3);
+	case 900:
+		board.DecreaseNumRow(4);
+		board.DecreaseNumRow(1);
+	case 1500:
+		board.DecreaseNumRow(8);
+		board.DecreaseNumRow(1);
+	}
+
+}

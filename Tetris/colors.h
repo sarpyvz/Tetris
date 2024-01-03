@@ -10,7 +10,7 @@ extern const sf::Color purple;
 extern const sf::Color cyan;
 extern const sf::Color blue;
 extern const sf::Color darkBlue;
-
+extern const sf::Color ghost;
 
 
 

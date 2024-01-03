@@ -137,3 +137,10 @@ void Board::MoveRowsDown(int row, int numRows)
 	} 
 }
 
+void Board::DecreaseNumRow(int n)
+{
+	//--numRows;
+	board[20 - n];
+}
+
+
